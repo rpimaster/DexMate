@@ -20,7 +20,7 @@ To work with the source code, clone this repository:
 ```bash
 git clone https://github.com/your-username/DexMate.git
 cd DexMate
-
+```
 ## 🤝 Contributing
 
 DexMate is an open-source project, and we welcome contributions from the community! Whether you're fixing a bug, suggesting a new feature, or improving documentation, your help is invaluable.
