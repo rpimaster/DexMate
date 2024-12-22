@@ -1,0 +1,124 @@
+{
+  "name": "dexmate-dexcom-glucose-monitor",
+  "displayName": "DexMate (dexcom glucose-monitor)",
+  "description": "",
+  "version": "0.0.1",
+  "icon": "assets/logo_png.png" ,
+  "galleryBanner.color": "#D8E8D1",
+  "keywords": [
+  "glucose monitor",
+  "dexcom",
+  "diabetes",
+  "health",
+  "real-time"
+  ],
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-dexcom-glucose-monitor.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "glucose-monitor.updateGlucose",
+        "title": "Update Glucose Reading"
+      },
+      {
+        "command": "glucose-monitor.configure",
+        "title": "Glucose Monitor: Configure Credentials"
+      }
+    ],
+    "configuration": {
+      "title": "DexMate Glucose Monitor",
+      "properties": {
+        "glucose-monitor.username": {
+          "type": "string",
+          "default": "",
+          "description": "Dexcom username"
+        },
+        "glucose-monitor.password": {
+          "type": "string",
+          "default": "",
+          "description": "Dexcom password"
+        },
+        "glucose-monitor.region": {
+          "type": "string",
+          "default": "ous",
+          "enum": [
+            "ous",
+            "us",
+            "jp"
+          ],
+          "description": "Dexcom region (ous or us or jp)"
+        },
+        "glucose-monitor.highThreshold": {
+          "type": "number",
+          "default": 10.0,
+          "description": "High glucose threshold (mmol/L)"
+        },
+        "glucose-monitor.lowThreshold": {
+          "type": "number",
+          "default": 4.0,
+          "description": "Low glucose threshold (mmol/L)"
+        },
+        "glucose-monitor.updateInterval": {
+          "type": "number",
+          "default": 5000,
+          "description": "Update interval in milliseconds"
+        },
+        "glucose-monitor.lastReadings": {
+          "type": "array",
+          "default": [],
+          "description": "Store last glucose readings"
+        },
+        "glucose-monitor.targetLow": {
+          "type": "number",
+          "default": 4.0,
+          "description": "Target low glucose value"
+        },
+        "glucose-monitor.targetHigh": {
+          "type": "number",
+          "default": 10.0,
+          "description": "Target high glucose value"
+        },
+        "glucose-monitor.unit": {
+          "type": "string",
+          "default": "mmol",
+          "enum": ["mmol", "mgdl"],
+          "description": "Glucose unit (mmol/L or mg/dL)"
+        },
+        "glucose-monitor.notifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable glucose notifications"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "lru-cache": "^11.0.2"
+  }
+}
