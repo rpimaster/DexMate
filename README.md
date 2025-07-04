@@ -10,6 +10,7 @@ DexMate is a lightweight desktop widget for Dexcom users, providing real-time gl
 - **Real-Time Data**: Displays glucose levels and trends from Dexcom devices.
 - **Lightweight and Intuitive**: Minimal resource usage with a user-friendly design.
 - **Customizable**: Adjust settings to match your preferences.
+Read more about amazing DexMate features here: https://dex-mate.com
 
 ---
 

@@ -2,8 +2,9 @@
   "name": "dexmate-dexcom-glucose-monitor",
   "displayName": "DexMate (dexcom glucose-monitor)",
   "description": "",
-  "version": "0.0.1",
-  "icon": "assets/logo_png.png" ,
+  "version": "0.0.2",
+  "publisher": "DexMate",
+  "icon": "assets/logo_png.png",
   "galleryBanner.color": "#D8E8D1",
   "keywords": [
   "glucose monitor",
@@ -26,81 +27,58 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-dexcom-glucose-monitor.helloWorld",
-        "title": "Hello World"
+        "command": "dexmate.configure",
+        "title": "DexMate: Configure Credentials"
       },
       {
-        "command": "glucose-monitor.updateGlucose",
-        "title": "Update Glucose Reading"
-      },
-      {
-        "command": "glucose-monitor.configure",
-        "title": "Glucose Monitor: Configure Credentials"
+        "command": "dexmate.updateGlucose",
+        "title": "DexMate: Update Glucose Reading"
       }
     ],
     "configuration": {
-      "title": "DexMate Glucose Monitor",
+      "title": "DexMate",
       "properties": {
-        "glucose-monitor.username": {
+        "dexmate.username": {
           "type": "string",
           "default": "",
-          "description": "Dexcom username"
+          "description": "Dexcom account username"
         },
-        "glucose-monitor.password": {
+        "dexmate.password": {
           "type": "string",
           "default": "",
-          "description": "Dexcom password"
+          "description": "Dexcom account password"
         },
-        "glucose-monitor.region": {
+        "dexmate.region": {
           "type": "string",
+          "enum": ["us", "ous", "jp"],
           "default": "ous",
-          "enum": [
-            "ous",
-            "us",
-            "jp"
-          ],
-          "description": "Dexcom region (ous or us or jp)"
+          "description": "Dexcom region (us, ous, or jp)"
         },
-        "glucose-monitor.highThreshold": {
-          "type": "number",
-          "default": 10.0,
-          "description": "High glucose threshold (mmol/L)"
+        "dexmate.unit": {
+          "type": "string",
+          "enum": ["mmol", "mgdl"],
+          "default": "mmol",
+          "description": "Glucose unit (mmol/L or mg/dL)"
         },
-        "glucose-monitor.lowThreshold": {
-          "type": "number",
-          "default": 4.0,
-          "description": "Low glucose threshold (mmol/L)"
-        },
-        "glucose-monitor.updateInterval": {
-          "type": "number",
-          "default": 5000,
-          "description": "Update interval in milliseconds"
-        },
-        "glucose-monitor.lastReadings": {
-          "type": "array",
-          "default": [],
-          "description": "Store last glucose readings"
-        },
-        "glucose-monitor.targetLow": {
+        "dexmate.targetLow": {
           "type": "number",
           "default": 4.0,
           "description": "Target low glucose value"
         },
-        "glucose-monitor.targetHigh": {
+        "dexmate.targetHigh": {
           "type": "number",
           "default": 10.0,
           "description": "Target high glucose value"
         },
-        "glucose-monitor.unit": {
-          "type": "string",
-          "default": "mmol",
-          "enum": ["mmol", "mgdl"],
-          "description": "Glucose unit (mmol/L or mg/dL)"
-        },
-        "glucose-monitor.notifications": {
+        "dexmate.notifications": {
           "type": "boolean",
           "default": true,
-          "description": "Enable glucose notifications"
+          "description": "Enable/disable glucose notifications"
+        },
+        "dexmate.lastReadings": {
+          "type": "array",
+          "default": [],
+          "description": "Store recent glucose readings"
         }
       }
     }

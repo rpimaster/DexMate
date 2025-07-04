@@ -1,7 +1,7 @@
 
-# Glucose Monitor for VS Code
+# DexMate for VS Code
 
-The **Glucose Monitor** extension integrates blood glucose monitoring data into your Visual Studio Code environment, providing real-time updates, trend analysis, and notifications directly in the editor.
+The **DexMate** extension integrates dexcom blood DexMateing data into your Visual Studio Code environment, providing real-time updates, trend analysis, and notifications directly in the editor.
 
 ## Features
 
@@ -18,14 +18,14 @@ The **Glucose Monitor** extension integrates blood glucose monitoring data into 
 
 1. Open Visual Studio Code.
 2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar or pressing `Ctrl+Shift+X`.
-3. Search for `Glucose Monitor`.
+3. Search for `DexMate`.
 4. Click **Install**.
 
 ## Usage
 
 ### Configuration
 
-1. Run the `Glucose Monitor: Configure` command from the Command Palette (`Ctrl+Shift+P`).
+1. Run the `DexMate: Configure Credentials` command from the Command Palette (`Ctrl+Shift+P`).
 2. Enter your Dexcom username and password.
 3. Select your region (`OUS`, `US`, or `JP`).
 4. Choose your preferred unit (`mmol/L` or `mg/dL`).
@@ -35,16 +35,18 @@ The **Glucose Monitor** extension integrates blood glucose monitoring data into 
 
 | Command | Description |
 |---------|-------------|
-| `Glucose Monitor: Update Now` | Fetch the latest glucose reading. |
-| `Glucose Monitor: Configure Settings` | Configure Dexcom credentials and preferences. |
-| `Glucose Monitor: Show Last Hour` | Display glucose readings for the last hour. |
-| `Glucose Monitor: Show Graph` | Open an interactive graph of recent glucose data. |
-| `Glucose Monitor: Enable/Disable Notifications` | Toggle notifications. |
-| `Glucose Monitor: Factory Reset / Logout` | Reset all settings to default. |
+| `Update Now` | Fetch the latest glucose reading. |
+| `Configure Settings` | Configure Dexcom credentials and preferences. |
+| `Show Last Hour` | Display glucose readings for the last hour. |
+| `Show Graph` | Open an interactive graph of recent glucose data. |
+| `Enable/Disable Notifications` | Toggle notifications. |
+| `Factory Reset / Logout` | Reset all settings to default. |
+
+You can access this commands by clicking on the glucose value in the bottom bar of the VS Code.
 
 ### Graphs
 
-The `Glucose Monitor: Show Graph` command displays a graph of recent readings with dynamic Y-axis scaling based on your data.
+The `Show Graph` command displays a graph of recent readings with dynamic Y-axis scaling based on your data.
 
 ### Notifications
 
@@ -62,7 +64,7 @@ Notifications can be enabled or disabled from the menu.
 - Visual Studio Code
 - Node.js
 - Python
-- Dexcom API credentials
+- Dexcom credentials
 
 ### Troubleshooting
 
@@ -81,4 +83,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Acknowledgements
 
-- It is using [pydexcom](https://gagebenne.github.io/pydexcom/pydexcom.html) for glucose data integration.
+- It is build using [pydexcom](https://gagebenne.github.io/pydexcom/pydexcom.html) for glucose data integration.

@@ -20,13 +20,13 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(_statusBarItem);
 
 	// Create command to update glucose
-	let disposable = vscode.commands.registerCommand('glucose-monitor.updateGlucose', () => {
+	let disposable = vscode.commands.registerCommand('dexmate.updateGlucose', () => {
 		updateGlucoseData();
 	});
 	context.subscriptions.push(disposable);
 
 	// Add configuration command
-	let configureCommand = vscode.commands.registerCommand('glucose-monitor.configure', async () => {
+	let configureCommand = vscode.commands.registerCommand('dexmate.configure', async () => {
 		const username = await vscode.window.showInputBox({
 			prompt: 'Enter your Dexcom username',
 			placeHolder: 'username'
@@ -67,7 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
 							value: unit === 'mmol' ? '10.0' : '180'
 						});
 						
-						const config = vscode.workspace.getConfiguration('glucose-monitor');
+						const config = vscode.workspace.getConfiguration('dexmate');
 						await config.update('username', username, true);
 						
 						await config.update('password', password, true);
@@ -75,7 +75,7 @@ export function activate(context: vscode.ExtensionContext) {
 						await config.update('targetLow', parseFloat(targetLow || '4.0'), true);
 						await config.update('targetHigh', parseFloat(targetHigh || '10.0'), true);
 						await config.update('unit', unit, true);
-						vscode.window.showInformationMessage('Glucose Monitor configured successfully!');
+						vscode.window.showInformationMessage('DexMate configured successfully!');
 						updateGlucoseData();
 					}
 				}
@@ -90,10 +90,10 @@ export function activate(context: vscode.ExtensionContext) {
 	// Update every 5 seconds (5000 milliseconds) instead of every second
 	updateInterval = setInterval(updateGlucoseData, 5000);
 
-	_statusBarItem.command = 'glucose-monitor.showMenu';
+	_statusBarItem.command = 'dexmate.showMenu';
 
-	let menuCommand = vscode.commands.registerCommand('glucose-monitor.showMenu', async () => {
-		const config = vscode.workspace.getConfiguration('glucose-monitor');
+	let menuCommand = vscode.commands.registerCommand('dexmate.showMenu', async () => {
+		const config = vscode.workspace.getConfiguration('dexmate');
 		const notificationsEnabled = config.get<boolean>('notifications') ?? true;
 		
 		const items = [
@@ -111,13 +111,13 @@ export function activate(context: vscode.ExtensionContext) {
 				updateGlucoseData();
 				break;
 			case 'Configure Settings':
-				vscode.commands.executeCommand('glucose-monitor.configure');
+				vscode.commands.executeCommand('dexmate.configure');
 				break;
 			case 'Show Last Hour':
 				showLastHourReadings();
 				break;
 			case 'Show Graph':
-				vscode.commands.executeCommand('glucose-monitor.showGraph');
+				vscode.commands.executeCommand('dexmate.showGraph');
 				break;
 			case 'Enable Notifications':
 			case 'Disable Notifications':
@@ -131,7 +131,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(menuCommand);
 
 	// Add command to show graph
-	let graphCommand = vscode.commands.registerCommand('glucose-monitor.showGraph', async () => {
+	let graphCommand = vscode.commands.registerCommand('dexmate.showGraph', async () => {
 		await GlucoseGraphPanel.createOrShow(context);
 	});
 	context.subscriptions.push(graphCommand);
@@ -143,7 +143,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function updateGlucoseData() {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const username = config.get<string>('username');
 	const password = config.get<string>('password');
 	const region = config.get<string>('region') || 'ous';
@@ -151,15 +151,15 @@ function updateGlucoseData() {
 	if (!username || !password) {
 		_statusBarItem.text = '$(error) Configuration missing';
 		_statusBarItem.tooltip = 'Click to configure Dexcom credentials';
-		_statusBarItem.command = 'glucose-monitor.configure'; // Make status bar clickable
+		_statusBarItem.command = 'dexmate.configure'; // Make status bar clickable
 		_statusBarItem.show();
 
 		void vscode.window.showWarningMessage(
-			'Dexcom Glucose Monitor needs to be configured.',
+			'DexMate needs to be configured.',
 			'Configure Now'
 		).then((selection) => {
 			if (selection === 'Configure Now') {
-				void vscode.commands.executeCommand('glucose-monitor.configure');
+				void vscode.commands.executeCommand('dexmate.configure');
 			}
 		});	
 		return;
@@ -223,7 +223,7 @@ except Exception as e:
 				console.log('Parsed reading:', data);
 				
 				// Convert values based on unit setting before storing
-				const config = vscode.workspace.getConfiguration('glucose-monitor');
+				const config = vscode.workspace.getConfiguration('dexmate');
 				const unit = config.get<string>('unit') || 'mmol';
 				
 				const convertedReadings = data.historical.map((reading: any) => ({
@@ -343,7 +343,7 @@ function getTrendArrow(trend: string | undefined): string {
 }
 
 function getGlucoseColor(value: number): string {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const unit = config.get<string>('unit') || 'mmol';
 	const targetHigh = config.get<number>('targetHigh') || (unit === 'mmol' ? 10.0 : 180);
 	const targetLow = config.get<number>('targetLow') || (unit === 'mmol' ? 4.0 : 72);
@@ -354,7 +354,7 @@ function getGlucoseColor(value: number): string {
 }
 
 function shouldNotify(newValue: number, newTime: string): boolean {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const notificationsEnabled = config.get<boolean>('notifications') ?? true;
 
 	if (!notificationsEnabled) { return false; }
@@ -383,7 +383,7 @@ function shouldNotify(newValue: number, newTime: string): boolean {
 }
 
 function toggleNotifications() {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const currentState = config.get<boolean>('notifications') ?? true;
 	config.update('notifications', !currentState, true);
 	vscode.window.showInformationMessage(
@@ -392,7 +392,7 @@ function toggleNotifications() {
 }
 
 async function showLastHourReadings() {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const readings = config.get<Array<{value: number, time: string}>>('lastReadings') || [];
 	const unit = config.get<string>('unit') || 'mmol';
 	
@@ -429,7 +429,7 @@ class GlucoseGraphPanel {
 			{ enableScripts: true }
 		);
 
-		const config = vscode.workspace.getConfiguration('glucose-monitor');
+		const config = vscode.workspace.getConfiguration('dexmate');
 		const readings = config.get<Array<{
 			value: number,
 			trend: string,
@@ -442,7 +442,7 @@ class GlucoseGraphPanel {
 }
 
 function getWebviewContent(data: any) {
-	const config = vscode.workspace.getConfiguration('glucose-monitor');
+	const config = vscode.workspace.getConfiguration('dexmate');
 	const unit = config.get<string>('unit') || 'mmol';
 	const targetLow = config.get<number>('targetLow') || (unit === 'mmol' ? 4.0 : 72);
 	const targetHigh = config.get<number>('targetHigh') || (unit === 'mmol' ? 10.0 : 180);
@@ -596,7 +596,7 @@ async function factoryReset() {
     );
 
     if (confirm === 'Yes, Reset All') {
-        const config = vscode.workspace.getConfiguration('glucose-monitor');
+        const config = vscode.workspace.getConfiguration('dexmate');
         await config.update('username', undefined, true);
         await config.update('password', undefined, true);
         await config.update('region', undefined, true);
