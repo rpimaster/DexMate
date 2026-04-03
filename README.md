@@ -1,87 +1,49 @@
 # DexMate
 
-DexMate is a lightweight desktop widget for Dexcom users, providing real-time glucose monitoring data directly on your desktop. It supports Windows, macOS, and Linux, offering a sleek and customizable interface.
+DexMate is a lightweight desktop widget for Dexcom users, providing real-time glucose data directly on your desktop.
 
----
+It works on Windows, macOS, and Linux, with a clean and customizable interface designed to stay simple and useful.
 
-## 🌟 Features
+## Features
 
-- **Cross-Platform Support**: Works seamlessly on Windows, macOS, and Linux.
-- **Real-Time Data**: Displays glucose levels and trends from Dexcom devices.
-- **Lightweight and Intuitive**: Minimal resource usage with a user-friendly design.
-- **Customizable**: Adjust settings to match your preferences.
-Read more about amazing DexMate features here: https://dex-mate.com
+- Cross-platform support for Windows, macOS, and Linux
+- Real-time glucose data and trends
+- Lightweight and intuitive design
+- Customizable settings
 
----
+Learn more at [dex-mate.com](https://dex-mate.com)
 
-## 🛠️ Development
+## Download
 
-### **Clone the Repository**
-To work with the source code, clone this repository:
+Visit the official website for downloads and more information:  
+[https://dex-mate.com/](https://dex-mate.com/)
+
+## Development
+
+To work with the source code:
+
 ```bash
-git clone https://github.com/your-username/DexMate.git
+git clone https://github.com/rpimaster/DexMate.git
 cd DexMate
 ```
-## 🤝 Contributing
 
-DexMate is an open-source project, and we welcome contributions from the community! Whether you're fixing a bug, suggesting a new feature, or improving documentation, your help is invaluable.
+## Contributing
 
-### How to Contribute
+DexMate is an open-source project, and contributions are welcome.
 
-1. **Fork the Repository**:
-   - Click the "Fork" button on the top-right of this repository to create your own copy.
+If you'd like to contribute:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Test everything properly
+5. Open a pull request with a clear description
 
-2. **Clone Your Fork**:
-   - Clone your fork locally:
-     ```bash
-     git clone https://github.com/your-username/DexMate.git
-     cd DexMate
-     ```
+## Important
 
-3. **Create a New Branch**:
-   - Create a branch for your feature or bug fix:
-     ```bash
-     git checkout -b feature/your-feature-name
-     ```
+DexMate is an open-source community project and is not a medical device.  
+Do not rely on it as your only source of glucose information or treatment decisions.
 
-4. **Make Changes**:
-   - Edit the code or documentation in your new branch. Ensure your changes follow the project's coding style.
+## Contact
 
-5. **Test Your Changes**:
-   - Run the application to verify that your changes work as intended:
-     ```bash
-     python dexmate.py
-     ```
-
-6. **Commit Your Changes**:
-   - Add a clear and descriptive commit message:
-     ```bash
-     git add .
-     git commit -m "Add: Your concise change description"
-     ```
-
-7. **Push Your Changes**:
-   - Push your branch to your forked repository:
-     ```bash
-     git push origin feature/your-feature-name
-     ```
-
-8. **Create a Pull Request**:
-   - Go to the original repository and click "New Pull Request".
-   - Provide a clear description of your changes and why they should be merged.
-
----
-
-### Guidelines for Contributors
-
-- Follow the coding standards used in this project.
-- Ensure your changes don’t break existing functionality.
-- Document any new features in the `README.md` or code comments.
-
-Thank you for contributing to DexMate! 😊
-
-## 📧 Contact
-
-For questions, feedback, or support, feel free to get in touch:
-
-- **Email**: [dexmate.contact@gmail.com](mailto:dexmate.contact@gmail.com)
+For questions, feedback, or support:  
+[dexmate.contact@gmail.com](mailto:dexmate.contact@gmail.com)
