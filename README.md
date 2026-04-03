@@ -7,9 +7,12 @@ It works on Windows, macOS, and Linux, with a clean and customizable interface d
 ## Features
 
 - Cross-platform support for Windows, macOS, and Linux
-- Real-time glucose data and trends
+- Real-time glucose data, trend and delta
 - Lightweight and intuitive design
 - Customizable settings
+- Alerts and notifications
+- Nightscout integration
+- Glucose prediction
 
 Learn more at [dex-mate.com](https://dex-mate.com)
 
