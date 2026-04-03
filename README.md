@@ -4,6 +4,10 @@ DexMate is a lightweight desktop widget for Dexcom users, providing real-time gl
 
 It works on Windows, macOS, and Linux, with a clean and customizable interface designed to stay simple and useful.
 
+## Preview
+
+![DexMate Screenshot](Pictures/dexmate_preview.png)
+
 ## Features
 
 - Cross-platform support for Windows, macOS, and Linux
